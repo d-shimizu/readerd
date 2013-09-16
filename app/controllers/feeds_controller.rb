@@ -52,22 +52,17 @@ class FeedsController < ApplicationController
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
-    res = add_feed(@feed.url)
 
-    if res == true
-      respond_to do |format|
-        if @feed.save
-          feed_fetch 
+    respond_to do |format|
+      if @feed.save
+        feed_fetch 
 
-          format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @feed }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @feed.errors, status: :unprocessable_entity }
-        end
+        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @feed }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
-    else
-      redirect_to '/feeds/new' , alert: 'Feed was not created.'
     end
   end
 
