@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20130908135253) do
 
   create_table "entries", force: true do |t|
     t.integer  "feed_id"
-    t.string   "title"
-    t.string   "url"
-    t.string   "summary"
+    t.text     "title"
+    t.text     "url"
+    t.text     "summary"
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"

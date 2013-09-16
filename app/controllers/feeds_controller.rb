@@ -1,11 +1,5 @@
-require 'feedzirra'
-require 'open-uri'
-require 'nokogiri'
-require 'rss'
-
 class FeedsController < ApplicationController
   include FetchFeed
-  include AddFeed
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
   # GET /feeds
