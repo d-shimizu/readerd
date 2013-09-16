@@ -67,7 +67,7 @@ class FeedsController < ApplicationController
         end
       end
     else
-      redirect_to '/feeds/new'
+      redirect_to '/feeds/new' , alert: 'Feed was not created.'
     end
   end
 
