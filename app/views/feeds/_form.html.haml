@@ -1,0 +1,25 @@
+= form_for @feed do |f|
+  - if @feed.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
+      %ul
+        - @feed.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :url
+    = f.text_field :url, :size => '1024'
+  .field
+    = f.label :feed_url
+    = f.text_field :feed_url
+  .field
+    = f.label :category_id
+    = f.number_field :category_id
+  .field
+    = f.label :last_modified
+    = f.datetime_select :last_modified
+  .actions
+    = f.submit 'Save'

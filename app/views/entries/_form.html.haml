@@ -1,0 +1,25 @@
+= form_for @entry do |f|
+  - if @entry.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@entry.errors.count, "error")} prohibited this entry from being saved:"
+      %ul
+        - @entry.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :feed_id
+    = f.number_field :feed_id
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :summary
+    = f.text_field :summary
+  .field
+    = f.label :published_at
+    = f.datetime_select :published_at
+  .actions
+    = f.submit 'Save'

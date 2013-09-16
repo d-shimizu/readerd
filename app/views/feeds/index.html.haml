@@ -1,0 +1,9 @@
+%h3 登録フィード一覧
+
+= link_to 'New Feed', new_feed_path
+
+%ul
+  %font(size="3px")
+    - @feeds.each do |feed|
+      %li.site
+        = link_to feed.title, feed

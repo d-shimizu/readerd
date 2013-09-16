@@ -1,0 +1,32 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @feed.title
+%p
+  %b Url:
+  = @feed.url
+%p
+  %b Feed url:
+  = @feed.feed_url
+%p
+  %b Category:
+  = @feed.category_id
+%p
+  %b Last modified:
+  = @feed.last_modified
+
+%br
+/= link_to 'Edit', edit_feed_path(@feed)
+= link_to 'Destroy', @feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+= link_to 'Back', feeds_path
+%br
+%br
+
+= render :file => 'layouts/common/feed_entry'
+
+/= link_to 'Edit', edit_feed_path(@feed)
+= link_to 'Destroy', @feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+= link_to 'Back', feeds_path

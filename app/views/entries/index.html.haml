@@ -1,0 +1,27 @@
+%h1 Listing entries
+
+%table
+  %tr
+    %th Feed
+    %th Title
+    %th Url
+    %th Summary
+    %th Published at
+    %th
+    %th
+    %th
+
+  - @entries.each do |entry|
+    %tr
+      %td= entry.feed_id
+      %td= entry.title
+      %td= entry.url
+      %td= entry.summary
+      %td= entry.published_at
+      %td= link_to 'Show', entry
+      %td= link_to 'Edit', edit_entry_path(entry)
+      %td= link_to 'Destroy', entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Entry', new_entry_path

@@ -1,0 +1,12 @@
+%div.categoryDetail
+  %font(size="4")
+    %strong Category: 
+  %strong= @category.name
+  -#%p
+  -#  %b Color:
+  -#  = @category.color
+
+= link_to 'Back', feeds_path
+
+%h3 新着情報
+= render :file => 'layouts/common/entries'

@@ -1,0 +1,16 @@
+%div
+  - @entries.each do |entry|
+    %div
+      %p
+        %font(size="3px")
+          = link_to entry.feed.title, entry.feed
+          |
+          = link_to content_tag(:span, entry.title), entry.url, :target=>["_blank"]
+          %br
+          /= link_to entry.feed.url.gsub(/^https?:\/\/(.*?)\/?$/, '\1')[0..100] + '...', entry.feed
+          = link_to entry.summary[0..500] + '...', entry.url, :target=>["_blank"]
+          %br
+          %font(size="1px")
+            = entry.published_at
+
+= paginate @entries, :window => 2, :outer_window => 2

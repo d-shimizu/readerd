@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  url: MyString
+  feed_url: MyString
+  category_id: 1
+  last_modified: 2013-09-08 22:28:39
+
+two:
+  title: MyString
+  url: MyString
+  feed_url: MyString
+  category_id: 1
+  last_modified: 2013-09-08 22:28:39
