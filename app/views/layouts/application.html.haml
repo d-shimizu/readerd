@@ -19,6 +19,8 @@
 
   %body
     /#loading.label.label-warning{:style => 'display:none; position:fluid; right:20px; bottom:20px; z-index:100000'} Loading...
+
+    /.navbar.navbar-fluid-top.navbar-inverse.navbar-static-top
     .navbar.navbar-fluid-top
       .navbar-inner
         .container-fluid
@@ -34,16 +36,12 @@
                 /%li= link_to "トップ", "/"
                 %li= link_to "登録フィード一覧", "/feeds"
                 %li= link_to "カテゴリー一覧", "/categories"
-                %li= link_to "ダッシュボード", "/admin"
+                /%li= link_to "ダッシュボード", "/admin"
                 %li
                   %a(href="/admin_users/sign_out" data-method="delete" rel="nofollow")
                     %span(class="label label-important")Log out
  
     .container-fluid
-
-      %h1
-        %a{:href => "/"}
-          feedman
 
       .row-fluid
         -# .span3
@@ -53,7 +51,7 @@
           = bootstrap_flash
           = yield
 
-      -#%footer
-        = render :file => 'shared/footer'
+      %footer
+        = render :file => 'layouts/common/footer'
 
     = javascript_include_tag "application"

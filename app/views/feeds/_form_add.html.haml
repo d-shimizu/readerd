@@ -21,5 +21,11 @@
   -#.field
     = f.label :last_modified
     = f.datetime_select :last_modified
-  .actions
+  -#.actions
     = f.submit 'Save'
+  /.form-actions
+  .actions
+    = f.submit nil, :class => 'btn btn-primary'
+    /= f.submit nil, :class => 'btn btn-mini btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), feeds_path, :class => 'btn'
+    /= link_to t('.cancel', :default => t("helpers.links.cancel")), feeds_path, :class => 'btn btn-mini'

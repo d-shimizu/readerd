@@ -1,3 +1,7 @@
+- model_class = Category
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
 %h3 カテゴリ一覧
 /%p 登録フィード
 /%ul.sidebar

@@ -1,7 +1,12 @@
-%h1 Editing feed
+- model_class = Feed
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"
 
-= render 'form'
+/%h1 Editing feed
 
-= link_to 'Show', @feed
-\|
-= link_to 'Back', feeds_path
+/= render 'form'
+
+/= link_to 'Show', @feed
+/\|
+/= link_to 'Back', feeds_path
