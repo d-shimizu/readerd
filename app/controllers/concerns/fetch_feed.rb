@@ -36,9 +36,11 @@ module FetchFeed
         feed['title'] = parsedFeed.title
         feed['last_modified'] = parsedFeed.last_modified
         feed['feed_url'] = "#{feed_url}"
-        if parsedFeed.url != nil  then
-          feed['url'] = "#{site_url}"
-        end
+        #if parsedFeed.url != nil  then
+        #if feed.url == nil  then
+          #feed['url'] = "#{site_url}"
+        #  feed['url'] = parsedFeed.url
+        #end
         feed.save
 
         tmp = parsedFeed.entries
