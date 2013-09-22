@@ -79,19 +79,6 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1.json
   def destroy
     @feed.destroy
-    feed_id =  @feed.id
-    #@entry.destroy_all("feed_id = '#{feed_id}'")
-    #@entries.destroy("feed_id = '#{feed_id}'")
-    #@feed.entries.includes([:feed]).destroy("feed_id = '#{feed_id}'")
-    #@feed.entries.destroy_all(["feed_id = '#{feed_id}'"])
-    #@feed.entries.destroy_all(["feed_id = ?","#{feed_id}"])
-    #@feed.entries.destroy_all(["feed_id = #{feed_id}"])
-    #@feed.entries.destroy_all("feed_id = #{feed_id}")
-    #@feed.entries.destroy_all("feed_id = #{feed_id}")
-    #@feed.entries.destroy("feed_id = #{feed_id}")
-    #@feed.entries.destroy
-    #@entry.destroy("feed_id = '#{feed_id}'")
-    @feed.entries.where(feed_id: "#{feed_id}").destroy_all
     respond_to do |format|
       format.html { redirect_to feeds_url }
       format.json { head :no_content }
