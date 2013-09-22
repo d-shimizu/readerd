@@ -40,12 +40,10 @@ namespace :fetch_feed do
 
             end
           end
-          #break
 
         elsif feed.feed_url != nil
           feed_url = feed.feed_url
           p "rss_url #{feed_url}"
-          #break
 
         end
 
@@ -73,6 +71,7 @@ namespace :fetch_feed do
 
           # DBに保存されている最新のエントリを取得
           latest_entry = Entry.where(:feed_id => feed.id).order('created_at DESC').first
+          p "latest_entry #{latest_entry}"
           # 取得したFeedを更新日時の昇順に並べ替え
           tmp = parsedFeed.entries
           parsedFeed_entries_tmp = tmp.sort{|aa, bb|
