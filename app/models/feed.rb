@@ -14,14 +14,15 @@ class Feed < ActiveRecord::Base
     if res == false && self.url != ""
       errors.add(:url, "Invalid")
     end
-    get_url=Feed.where(:url => "#{url}").first
-    get_feedurl=Feed.where(:feed_url => "#{feed_url}").first
+    #get_url=Feed.where(:url => "#{url}").first
+    #get_feedurl=Feed.where(:feed_url => "#{feed_url}").first
     ### IDを検索して、URLとIDが共にあればTrueを返す
     #get_url=Feed.where(:url => "#{url}").first
     #get_url=Feed.find_by_url("#{url}")
-    if get_url != url && get_feedurl == feed_url
-      errors.add(:url, "already exist")
-    end
+    #if get_url == url && get_feedurl != feed_url
+    #if get_url != nil && get_feedurl == nil
+    #  errors.add(:url, "already exist")
+    #end
   end
 
   #validate :sameurlcheck

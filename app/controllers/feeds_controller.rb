@@ -1,4 +1,5 @@
 class FeedsController < ApplicationController
+  #require 'fetch_feed'
   include FetchFeed
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
