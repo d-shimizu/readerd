@@ -1,6 +1,8 @@
 class FeedsController < ApplicationController
-  #require 'fetch_feed'
+  require 'fetch_feed'
+  require 'url_analyze'
   include FetchFeed
+  include UrlAnalyze
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
   # GET /feeds
@@ -47,6 +49,8 @@ class FeedsController < ApplicationController
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
+    #@feed.url = URI.parse(@feed.url).scheme + "://" + URI.parse(@feed.url).host + "/" rescue @feed = Feed.new(feed_params)
+    @feed.title, @feed.url, @feed.feed_url, @feed.last_modified = url_analyze(@feed.url)
 
     respond_to do |format|
       if @feed.save
@@ -80,18 +84,8 @@ class FeedsController < ApplicationController
   def destroy
     @feed.destroy
     feed_id =  @feed.id
-    #@entry.destroy_all("feed_id = '#{feed_id}'")
-    #@entries.destroy("feed_id = '#{feed_id}'")
-    #@feed.entries.includes([:feed]).destroy("feed_id = '#{feed_id}'")
-    #@feed.entries.destroy_all(["feed_id = '#{feed_id}'"])
-    #@feed.entries.destroy_all(["feed_id = ?","#{feed_id}"])
-    #@feed.entries.destroy_all(["feed_id = #{feed_id}"])
-    #@feed.entries.destroy_all("feed_id = #{feed_id}")
-    #@feed.entries.destroy_all("feed_id = #{feed_id}")
-    #@feed.entries.destroy("feed_id = #{feed_id}")
-    #@feed.entries.destroy
-    #@entry.destroy("feed_id = '#{feed_id}'")
     @feed.entries.where(feed_id: "#{feed_id}").destroy_all
+
     respond_to do |format|
       format.html { redirect_to feeds_url }
       format.json { head :no_content }

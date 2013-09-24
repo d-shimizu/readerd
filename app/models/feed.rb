@@ -11,10 +11,14 @@ class Feed < ActiveRecord::Base
   validate :url_check
   def url_check
     res = check_url(self.url)
+    #res = check_url(@feed.url)
+    #res = check_url
     if res == false && self.url != ""
+    #if res == false && @feed.url != ""
       errors.add(:url, "Invalid")
     end
     get_url=Feed.where(:url => "#{url}").first rescue get_url = nil
+    #get_url=Feed.where(:url => @feed.url).first rescue get_url = nil
     url_id = get_url.id rescue url_id = nil
     url_entry = Entry.where(:feed_id => "#{url_id}").first rescue url_entry = nil
     if url_id != nil && url_entry != nil
