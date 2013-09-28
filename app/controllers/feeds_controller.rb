@@ -23,7 +23,9 @@ class FeedsController < ApplicationController
   # GET /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
-    @entries = @feed.entries.includes([:feed]).page params[:page]
+    #@entries = @feed.entries.includes([:feed]).page params[:page]
+    @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
+    #@entries = Entry.includes([:feed]).order('published_at DESC').page(params[:page]).per(10)
     @category = @feed.category
 
     respond_to do |format|
@@ -83,6 +85,7 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1.json
   def destroy
     @feed.destroy
+
     feed_id =  @feed.id
     @feed.entries.where(feed_id: "#{feed_id}").destroy_all
 

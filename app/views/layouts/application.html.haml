@@ -21,7 +21,8 @@
     /#loading.label.label-warning{:style => 'display:none; position:fluid; right:20px; bottom:20px; z-index:100000'} Loading...
 
     /.navbar.navbar-fluid-top.navbar-inverse.navbar-static-top
-    .navbar.navbar-fluid-top
+    /.navbar.navbar-fluid-top.navbar-inverse
+    .navbar.navbar-fluid-top.navbar-inverse.navbar-static-top
       .navbar-inner
         .container-fluid
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
@@ -33,7 +34,6 @@
             %ul.nav
               - if admin_user_signed_in?
                 /%li.right 
-                /%li= link_to "トップ", "/"
                 %li= link_to "登録フィード一覧", "/feeds"
                 %li= link_to "カテゴリー一覧", "/categories"
                 /%li= link_to "ダッシュボード", "/admin"
@@ -44,14 +44,14 @@
     .container-fluid
 
       .row-fluid
-        -# .span3
+        -#.span3
           .well.sidebar-nav
-            = render :file => 'shared/sidebar'
+          = render :file => 'layouts/common/sidebar'
         .span12
           = bootstrap_flash
           = yield
 
-      %footer
-        /= render :file => 'layouts/common/footer'
+    %footer
+      /= render :file => 'layouts/common/footer'
 
-    = javascript_include_tag "application"
+= javascript_include_tag "application"

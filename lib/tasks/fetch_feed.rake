@@ -26,13 +26,13 @@ namespace :fetch_feed do
 
           doc.css('link').each do |link|
 
-            if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate'
+            if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
               href = link['href']
               feed_url = URI.join(site_url, href)
               p "feed_url #{feed_url}"
               break
 
-            elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate'
+            elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
               href = link['href']
               feed_url = URI.join(site_url, href)
               p "atom_url #{feed_url}"

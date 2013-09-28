@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+   @categories = Category.all
   end
 
   # GET /categories/1
@@ -71,4 +71,5 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :color)
     end
+
 end

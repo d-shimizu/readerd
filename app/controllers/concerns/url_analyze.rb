@@ -13,16 +13,21 @@ module UrlAnalyze
         begin
           doc = Nokogiri::HTML(open(url),nil,'utf-8')
         rescue
-          @feed.url = url
           #return @feed.url
-          return @feed.title, @feed.url, @feed.feed_url, @feed.last_modified
+          #return @feed.title, url, @feed.feed_url, @feed.last_modified
+          return nil, url, nil, nil
         end
         doc.css('link').each do |link|
-          if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate'
+          if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
             href = link['href']
+            #new_url= URI.parse(url).scheme + "://" + URI.parse(url).host
+            #@feed_url = URI.join(url, href)
             @feed_url = URI.join(url, href)
-          elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate'
+          elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
             href = link['href']
+            #new_url= URI.parse(url).scheme + "://" + URI.parse(url).host
+            #@feed_url = URI.join(url, href)
+            #@feed_url = URI.join(URI.parse(url).scheme + "://" + URI.parse(url).host, href)
             @feed_url = URI.join(url, href)
           end
         end
@@ -35,7 +40,10 @@ module UrlAnalyze
         end
 
         if !parsedFeed || parsedFeed.instance_of?(Fixnum)
-          p 'Skipped '+feed.url
+          p 'Skipped '+ @feed.url
+          #return parsedFeed.title, parsedFeed.url, parsedFeed.feed_url, parsedFeed.last_modified
+          #return false, false, false, false
+          return nil, nil, nil, nil
         end
 
         # Update feed meta data
