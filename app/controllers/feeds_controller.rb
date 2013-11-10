@@ -8,7 +8,8 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    #@feeds = Feed.all
+    @feeds = Feed.all.order('title ASC')
 
     respond_to do |format|
       format.html

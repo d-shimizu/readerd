@@ -11,8 +11,9 @@
 %br
 
 %ul
+%dl
   %font(size="3px")
     - @feeds.each do |feed|
-      %li.site
+      %dd.site
         %img{:src => 'http://www.google.com/s2/favicons?domain='+feed.url+''}
         = link_to feed.title, feed

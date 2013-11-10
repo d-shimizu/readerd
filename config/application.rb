@@ -2,6 +2,9 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+### newrelic
+require 'newrelic_rpm'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
@@ -25,9 +28,9 @@ module Feedman
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
-    config.assets.enabled = true
-    config.assets.initialize_on_precompile = false
-    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
+    #config.assets.enabled = true
+    #config.assets.initialize_on_precompile = false
+    #config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
 
     ### Module Path
     #config.autoload_paths += %W(#{config.root}/lib/module)

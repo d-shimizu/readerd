@@ -2,6 +2,9 @@
 /.container-fluid
 /.span-one-third
 /.row-fluid.feed-entry
+%div(align="center")
+  = paginate @entries, :window => 2, :outer_window => 2
+
 .div.feed-entry
   - @entries.each do |entry|
     .div

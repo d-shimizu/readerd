@@ -78,7 +78,7 @@ gem 'kaminari'
 gem 'feedzirra', :git => 'https://github.com/pauldix/feedzirra.git'
 
 ### Use nokogiri for URL Analyze
-gem 'nokogiri', '~> 1.5.10'
+gem 'nokogiri', '~> 1.6.0'
 
 ### Use rails_admin(Rails Admin Page)
 gem 'rails_admin'
@@ -89,3 +89,6 @@ gem 'devise-i18n'
 
 ### Use protected_attributes
 gem 'protected_attributes'
+
+### newrelic
+gem 'newrelic_rpm'
