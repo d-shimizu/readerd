@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Feedman::Application.load_tasks
+Readerd::Application.load_tasks

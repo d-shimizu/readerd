@@ -23,7 +23,9 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-    @feed = Feed.find(params[:id])
+    #@feed = Feed.find(params[:id])
+    @feeds = Feed.all.order('title ASC')
+    #@feeds = @feed.all.order('title ASC')
     #@entries = @feed.entries.includes([:feed]).page params[:page]
     @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
     #@entries = Entry.includes([:feed]).order('published_at DESC').page(params[:page]).per(10)
@@ -32,7 +34,8 @@ class FeedsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json=>{
-        :feed     => @feed,
+        #:feed     => @feed,
+        :feeds    => @feeds,
         :category => @category,
         :entries  => @entries
       }}
@@ -42,16 +45,34 @@ class FeedsController < ApplicationController
   # GET /feeds/new
   def new
     @feed = Feed.new
+    @feeds = Feed.all.order('title ASC')
+    respond_to do |format|
+      format.html
+      format.json { render :json => {
+        :feed  => @feed,
+        :feeds => @feeds
+      }}
+    end
   end
 
   # GET /feeds/1/edit
   def edit
+    #@feed = Feed.new
+    @feeds = Feed.all.order('title ASC')
+    respond_to do |format|
+      format.html
+      format.json { render :json => {
+        #:feed  => @feed,
+        :feeds => @feeds
+      }}
+    end
   end
 
   # POST /feeds
   # POST /feeds.json
   def create
     @feed = Feed.new(feed_params)
+    @feeds = Feed.all.order('title ASC')
     #@feed.url = URI.parse(@feed.url).scheme + "://" + URI.parse(@feed.url).host + "/" rescue @feed = Feed.new(feed_params)
     @feed.title, @feed.url, @feed.feed_url, @feed.last_modified = url_analyze(@feed.url)
 
@@ -60,10 +81,10 @@ class FeedsController < ApplicationController
         feed_fetch 
 
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @feed }
+        format.json { render action: 'show', status: :created, location: @feed, :json => { :feed  => @feed, :feeds => @feeds } }
       else
         format.html { render action: 'new' }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
       end
     end
   end
@@ -71,13 +92,14 @@ class FeedsController < ApplicationController
   # PATCH/PUT /feeds/1
   # PATCH/PUT /feeds/1.json
   def update
+    @feeds = Feed.all.order('title ASC')
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to @feed, notice: 'Feed was successfully updated.', :json => { :feeds => @feeds }}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        format.json { render json: @feed.errors, status: :unprocessable_entity , :json => { :feeds => @feeds }}
       end
     end
   end
@@ -91,7 +113,8 @@ class FeedsController < ApplicationController
     @feed.entries.where(feed_id: "#{feed_id}").destroy_all
 
     respond_to do |format|
-      format.html { redirect_to feeds_url }
+      #format.html { redirect_to feeds_url }
+      format.html { redirect_to "/",  notice: 'Feed was successfully deleted' }
       format.json { head :no_content }
     end
   end

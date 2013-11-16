@@ -1,7 +1,6 @@
-Feedman::Application.routes.draw do
-
-  devise_for :admin_users
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+Readerd::Application.routes.draw do
+  devise_for :users
+  resources :entries
 
   resources :entries
 
@@ -11,7 +10,6 @@ Feedman::Application.routes.draw do
 
   get "root/index"
   root :to => 'root#index'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

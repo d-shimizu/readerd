@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  url: MyString
-  feed_url: MyString
+  title: MyText
+  url: MyText
+  feed_url: MyText
   category_id: 1
-  last_modified: 2013-09-08 22:28:39
+  last_modified: 2013-11-16 15:59:19
 
 two:
-  title: MyString
-  url: MyString
-  feed_url: MyString
+  title: MyText
+  url: MyText
+  feed_url: MyText
   category_id: 1
-  last_modified: 2013-09-08 22:28:39
+  last_modified: 2013-11-16 15:59:19

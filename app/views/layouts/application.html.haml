@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 %html
   %head
-    %title feedman
+    %title Feed Reader
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta{:name => "viewport", :content => "width=device-width"}
@@ -29,25 +29,36 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="/") feedman
+          %a.brand(href="/") Feed Reader
           .container.nav-collapse
-            %ul.nav
-              - if admin_user_signed_in?
+            %ul.nav(class='pull-right')
+              /- if admin_user_signed_in?
+              - if user_signed_in?
                 /%li.right 
-                %li= link_to "登録フィード一覧", "/feeds"
-                %li= link_to "カテゴリー一覧", "/categories"
+                /%li= link_to "登録フィード一覧", "/feeds"
+                /%li= link_to "カテゴリー一覧", "/categories"
                 /%li= link_to "ダッシュボード", "/admin"
                 %li
-                  %a(href="/admin_users/sign_out" data-method="delete" rel="nofollow")
-                    %span(class="label label-important")Log out
+                  /%a(href="/admin_users/sign_out" data-method="delete" rel="nofollow")
+                  %a(href="/users/sign_out" data-method="delete" rel="nofollow")
+                    %span(class="label label-important") Log out
  
     .container-fluid
+
+      %h1
+        %a{:href => "/"} Feed Reader
 
       .row-fluid
         -#.span3
           .well.sidebar-nav
           = render :file => 'layouts/common/sidebar'
-        .span12
+        /- if admin_user_signed_in?
+        - if user_signed_in?
+          .span3
+            = render :file => 'layouts/common/side'
+            /%iframe{:src => "layouts/common/side"}
+        -#.span12
+        .span9
           = bootstrap_flash
           = yield
 

@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'rss'
 
 namespace :fetch_feed do
+
   desc "fetch RSS feed"
 
     task :fetch => :environment do

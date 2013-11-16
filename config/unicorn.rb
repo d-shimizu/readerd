@@ -1,4 +1,4 @@
-application = 'feedman'
+application = 'readerd'
 
 worker_processes 2
 working_directory "/home/www/#{application}"

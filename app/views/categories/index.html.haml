@@ -1,17 +1,19 @@
-- model_class = Category
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%h1 Listing categories
 
-%h3 カテゴリ一覧
-/%p 登録フィード
-/%ul.sidebar
-%div.style
-  %font(size="4px")
-    /- @nav_categories.each do |category|
-    - @categories.each do |category|
-      %li.category
-        = link_to category.name, category
-        %ul
-          - category.feeds.each do |feed|
-            %li.site
-              = link_to feed.title, feed
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      %td= link_to 'Show', category
+      %td= link_to 'Edit', edit_category_path(category)
+      %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Category', new_category_path

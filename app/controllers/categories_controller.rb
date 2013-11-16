@@ -4,7 +4,15 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-   @categories = Category.all
+    @categories = Category.all
+    @feeds = Feed.all.order('title ASC')
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => {
+        :feeds => @feeds
+      }}
+    end
   end
 
   # GET /categories/1
