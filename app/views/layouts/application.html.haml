@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 %html
   %head
-    %title Feed Reader
+    %title readerd
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta{:name => "viewport", :content => "width=device-width"}
@@ -29,7 +29,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="/") Feed Reader
+          %a.brand(href="/") readerd
           .container.nav-collapse
             %ul.nav(class='pull-right')
               /- if admin_user_signed_in?
@@ -46,7 +46,7 @@
     .container-fluid
 
       %h1
-        %a{:href => "/"} Feed Reader
+        %a{:href => "/"} readerd
 
       .row-fluid
         -#.span3
@@ -57,10 +57,13 @@
           .span3
             = render :file => 'layouts/common/side'
             /%iframe{:src => "layouts/common/side"}
-        -#.span12
-        .span9
-          = bootstrap_flash
-          = yield
+          .span9
+            = bootstrap_flash
+            = yield
+        - else
+          .span12
+            = bootstrap_flash
+            = yield
 
     %footer
       /= render :file => 'layouts/common/footer'
