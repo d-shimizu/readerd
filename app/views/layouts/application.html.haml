@@ -34,6 +34,9 @@
             %ul.nav(class='pull-right')
               /- if admin_user_signed_in?
               - if user_signed_in?
+                /%li.head{:href => "/feeds"} 登録フィード一覧
+                %li.head
+                  = link_to "登録フィード一覧", "/feeds"
                 /%li.right 
                 /%li= link_to "登録フィード一覧", "/feeds"
                 /%li= link_to "カテゴリー一覧", "/categories"
@@ -54,7 +57,7 @@
           = render :file => 'layouts/common/sidebar'
         /- if admin_user_signed_in?
         - if user_signed_in?
-          .span3
+          .span3.side
             = render :file => 'layouts/common/side'
             /%iframe{:src => "layouts/common/side"}
           .span9

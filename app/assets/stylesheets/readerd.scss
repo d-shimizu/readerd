@@ -1,6 +1,16 @@
-/** @media screen and (max-width: 640px) { **/
-@media(max-width: 768px) {
-  dd.site {
+@media screen and (min-width: 769px) {
+  li.head {
     display: none;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .span3.side {
+    display: none;
+  }
+
+  li.head {
+    display: inline;
   }
 }

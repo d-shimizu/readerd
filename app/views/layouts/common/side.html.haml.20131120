@@ -1,5 +1,5 @@
 - model_class = Feed
-.page-header
+-#.page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
 
 %h3 登録フィード一覧
@@ -7,6 +7,7 @@
 = link_to t('.new', :default => t("helpers.links.new")), new_feed_path, :class => 'btn btn-primary'
 /= link_to t('.new', :default => t("helpers.links.new")), new_feed_path, :class => 'btn btn-mini btn-primary'
 /= link_to 'New Feed', new_feed_path
+%br
 %br
 
 %ul
