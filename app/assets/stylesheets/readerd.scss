@@ -4,7 +4,6 @@
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .span3.side {
     display: none;
@@ -13,4 +12,15 @@
   li.head {
     display: inline;
   }
+}
+
+h2 {
+  /* margin:1.5em 0 .75em; */
+  /* font:normal normal 100% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif; */
+  font-size: 170%;
+  /* font-weight:bold; */
+  /* line-height: 1.4em; */
+  /* letter-spacing:.2em; */
+  /* color:#999999; */
+  border-bottom:1px dotted #cccccc;
 }

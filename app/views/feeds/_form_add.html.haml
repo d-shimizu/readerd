@@ -1,7 +1,8 @@
 = form_for @feed do |f|
   - if @feed.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
+      /%h2= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
+      %h3= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
       %ul
         - @feed.errors.full_messages.each do |msg|
           %li= msg
@@ -11,7 +12,7 @@
     = f.text_field :title
   .field
     = f.label :url
-    = f.text_field :url, :size => '255'
+    = f.text_field :url, :size => 128
   -#.field
     = f.label :feed_url
     = f.text_field :feed_url

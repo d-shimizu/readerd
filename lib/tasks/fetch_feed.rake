@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'rss'
 
 namespace :fetch_feed do
+  include ActiveModel::ForbiddenAttributesProtection
 
   desc "fetch RSS feed"
 
@@ -103,6 +104,7 @@ namespace :fetch_feed do
                 :summary      => (feed_entry.summary || feed_entry.content || '').gsub(/<.+?>/m, '').slice(0, 255),
                 :published_at => feed_entry.published,
                 :feed_id      => feed.id
+                #:read         => 'f'
               })
               entry.save
             end

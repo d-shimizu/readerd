@@ -1,7 +1,6 @@
 module FetchFeed
   def feed_fetch
-        #readflg = "f"
-
+        readflg = "f"
         #maxid = Feed.maximum('id')
         #feed=Feed.find(maxid, :select => "*")
         #hash_url=Feed.find(maxid, :select => "url")
@@ -76,9 +75,9 @@ module FetchFeed
                :url          => feed_entry.url,
                :summary      => (feed_entry.summary || feed_entry.content || '').gsub(/<.+?>/m, '').slice(0, 255),
                :published_at => feed_entry.published,
-               :feed_id      => @feed.id
-               #:feed_id      => @feed.id,
-               #:read         => readflg
+               #:feed_id      => @feed.id
+               :feed_id      => @feed.id,
+               :read         => readflg
              })
              entry.save
           end

@@ -97,7 +97,8 @@ gem 'devise'
 gem 'devise-i18n'
 
 ### Use protected_attributes
-gem 'protected_attributes'
+#gem 'protected_attributes'
+#gem 'strong_parameters'
 
 ### newrelic
 gem 'newrelic_rpm'
