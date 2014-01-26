@@ -23,18 +23,13 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-    #@feed = Feed.find(params[:id])
     @feeds = Feed.all.order('title ASC')
-    #@feeds = @feed.all.order('title ASC')
-    #@entries = @feed.entries.includes([:feed]).page params[:page]
     @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
-    #@entries = Entry.includes([:feed]).order('published_at DESC').page(params[:page]).per(10)
     @category = @feed.category
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json=>{
-        #:feed     => @feed,
         :feeds    => @feeds,
         :category => @category,
         :entries  => @entries
@@ -62,7 +57,6 @@ class FeedsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => {
-        #:feed  => @feed,
         :feeds => @feeds
       }}
     end
@@ -73,7 +67,6 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
     @feeds = Feed.all.order('title ASC')
-    #@feed.url = URI.parse(@feed.url).scheme + "://" + URI.parse(@feed.url).host + "/" rescue @feed = Feed.new(feed_params)
     @feed.title, @feed.url, @feed.feed_url, @feed.last_modified = url_analyze(@feed.url)
 
     respond_to do |format|
@@ -113,7 +106,6 @@ class FeedsController < ApplicationController
     @feed.entries.where(feed_id: "#{feed_id}").destroy_all
 
     respond_to do |format|
-      #format.html { redirect_to feeds_url }
       format.html { redirect_to "/",  notice: 'Feed was successfully deleted' }
       format.json { head :no_content }
     end
