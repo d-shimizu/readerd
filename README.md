@@ -15,14 +15,14 @@
  You must run Nginx and PostgreSQL.
  Then, Please do the following.
 
-$ git clone https://github.com/daigoro-rc/readerd.git
+ $ git clone https://github.com/daigoro-rc/readerd.git
 
-$ bundle install --path vendor/bundler
+ $ bundle install --path vendor/bundler
 
-$ bundle exec rake generate_secret_token:generate
+ $ bundle exec rake generate_secret_token:generate
 
-$ vi config/database.yml
+ $ vi config/database.yml
 
-$ bundle exec rake db:migrate
+ $ bundle exec rake db:migrate
 
-$ bundle exec unicorn_rails -c config/unicorn.rb -E production -D -p 3000
+ $ bundle exec unicorn_rails -c config/unicorn.rb -E production -D -p 3000
