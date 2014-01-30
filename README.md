@@ -1,15 +1,15 @@
-Description:
+*Description
 
  This is a Feed Reader Application.
 
-Environment:
+*Environment
 
  Ruby 2.0
  Rails 4.0
  Nginx 1.4
  PostgreSQL 9.3
 
-Setting:
+*Setting
 
  Please install Ruby 2.0, Rails 4.0 and necessary Gem, Nginx 1.4, PostgreSQL 9.3 and do necessary setting.
  You must run Nginx and PostgreSQL.
