@@ -1,0 +1,59 @@
+have_library: checking for main() in -lpthread... -------------------- yes
+
+"gcc -o conftest -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0/x86_64-linux -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0/ruby/backward -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0 -I. -I'/usr/local/src/rbenv/versions/2.0.0-p195/include'     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L/usr/local/src/rbenv/versions/2.0.0-p195/lib -Wl,-R/usr/local/src/rbenv/versions/2.0.0-p195/lib -L. -L'/usr/local/src/rbenv/versions/2.0.0-p195/lib'  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/src/rbenv/versions/2.0.0-p195/lib -L/usr/local/src/rbenv/versions/2.0.0-p195/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0/x86_64-linux -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0/ruby/backward -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0 -I. -I'/usr/local/src/rbenv/versions/2.0.0-p195/include'     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L/usr/local/src/rbenv/versions/2.0.0-p195/lib -Wl,-R/usr/local/src/rbenv/versions/2.0.0-p195/lib -L. -L'/usr/local/src/rbenv/versions/2.0.0-p195/lib'  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/src/rbenv/versions/2.0.0-p195/lib -L/usr/local/src/rbenv/versions/2.0.0-p195/lib -lruby-static -lpthread  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: error: ‘main’ undeclared (first use in this function)
+conftest.c:5: error: (Each undeclared identifier is reported only once
+conftest.c:5: error: for each function it appears in.)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+"gcc -o conftest -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0/x86_64-linux -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0/ruby/backward -I/usr/local/src/rbenv/versions/2.0.0-p195/include/ruby-2.0.0 -I. -I'/usr/local/src/rbenv/versions/2.0.0-p195/include'     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L/usr/local/src/rbenv/versions/2.0.0-p195/lib -Wl,-R/usr/local/src/rbenv/versions/2.0.0-p195/lib -L. -L'/usr/local/src/rbenv/versions/2.0.0-p195/lib'  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/src/rbenv/versions/2.0.0-p195/lib -L/usr/local/src/rbenv/versions/2.0.0-p195/lib -lruby-static -lpthread  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5: 警告: implicit declaration of function ‘main’
+conftest.c:8: 警告: ‘argc’ is used uninitialized in this function
+conftest.c:5: note: ‘argc’ was declared here
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { main(); return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
