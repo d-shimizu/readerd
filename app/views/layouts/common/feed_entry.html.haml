@@ -1,9 +1,9 @@
 %div(align="center")
   = paginate @entries, :window => 2, :outer_window => 2
 
-.div.feed-entry
+%div.feed-entry
   - @entries.each do |entry|
-    .div
+    %div{:id => entry.id}
       %p
         %font(size="3px")
           %img{:src => 'http://www.google.com/s2/favicons?domain='+entry.feed.url+''}
@@ -15,6 +15,8 @@
           %br
           %font(size="1px")
             = entry.published_at
+          -#%span(style="display:none;")
+            = entry.id
 
 %div(align="center")
   = paginate @entries, :window => 2, :outer_window => 2
