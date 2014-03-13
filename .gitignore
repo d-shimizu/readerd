@@ -19,7 +19,7 @@
 /.ssh/*
 /.env
 /config/initializers/secret_token.rb
-vendor/bundle/*
+vendor/bundler/*
 *.lock
 *.BK.ORG
 *.ORG
