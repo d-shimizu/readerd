@@ -2,9 +2,9 @@ module FetchFeed
   def feed_fetch
 
         if false && @feed.last_modified != nil
-          parsedFeed = Feedzirra::Feed.fetch_and_parse "#{@feed.feed_url}", :if_modified_since => feed.last_modified
+          parsedFeed = Feedjira::Feed.fetch_and_parse "#{@feed.feed_url}", :if_modified_since => feed.last_modified
         else
-          parsedFeed = Feedzirra::Feed.fetch_and_parse "#{@feed.feed_url}"
+          parsedFeed = Feedjira::Feed.fetch_and_parse "#{@feed.feed_url}"
         end
 
         if !parsedFeed || parsedFeed.instance_of?(Fixnum)
@@ -37,6 +37,7 @@ module FetchFeed
              p feed_entry.published
 
              entry = Entry.new({
+               :feed_title   => @feed.title,
                :title        => feed_entry.title,
                :url          => feed_entry.url,
                :summary      => (feed_entry.summary || feed_entry.content || '').gsub(/<.+?>/m, '').slice(0, 255),

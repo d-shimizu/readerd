@@ -1,19 +1,22 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+#gem 'rails', '4.0.0'
+gem 'rails'
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+#gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+#gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -52,8 +55,10 @@ end
 gem 'pg'
 
 ### Use railties
-gem 'railties', '~> 4.0.0'
-gem 'activesupport', '~> 4.0.0'
+#gem 'railties', '~> 4.0.0'
+#gem 'activesupport', '~> 4.0.0'
+gem 'railties'
+gem 'activesupport'
 
 ### Use rake
 gem 'rake'
@@ -86,11 +91,16 @@ gem 'whenever'
 # See http://memo.yomukaku.net/entries/238
 gem 'kaminari'
 
+#gem 'curb', '0.8.5' 
+gem 'curb'
 ### Use feedzirra for Feed Analyze
-gem 'feedzirra', :git => 'https://github.com/pauldix/feedzirra.git'
+#gem 'feedzirra', :git => 'https://github.com/pauldix/feedzirra.git'
+#gem 'feedzirra'
+gem 'feedjira'
 
 ### Use nokogiri for URL Analyze
-gem 'nokogiri', '~> 1.6.0'
+#gem 'nokogiri', '~> 1.6.0'
+gem 'nokogiri'
 
 ### Use devise (User Authorization)
 gem 'devise'
@@ -102,3 +112,5 @@ gem 'devise-i18n'
 
 ### newrelic
 gem 'newrelic_rpm'
+
+gem "awesome_nested_set"

@@ -5,6 +5,8 @@ class EntriesController < ApplicationController
   # GET /entries.json
   def index
     @feeds = Feed.all
+    #@entries = Entry.all
+    #@entries = Entry.includes([:feed])
   end
 
   # GET /entries/1

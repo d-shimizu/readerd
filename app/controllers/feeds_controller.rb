@@ -25,6 +25,7 @@ class FeedsController < ApplicationController
   def show
     @feeds = Feed.all.order('title ASC')
     @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
+    #@entries = @feed.entries.includes([:feed]).references(:feed).page(params[:page]).order('published_at DESC').per(16)
     @category = @feed.category
 
     respond_to do |format|

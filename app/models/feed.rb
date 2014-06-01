@@ -20,5 +20,4 @@ class Feed < ActiveRecord::Base
       errors.add(:url, "already exist")
     end
   end
-
 end

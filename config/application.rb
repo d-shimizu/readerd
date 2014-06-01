@@ -28,6 +28,6 @@ module Readerd
     # config.i18n.default_locale = :de
 
     ### https://github.com/rails/strong_parameters#installation
-    config.active_record.whitelist_attributes = false
+    #config.active_record.whitelist_attributes = false
   end
 end

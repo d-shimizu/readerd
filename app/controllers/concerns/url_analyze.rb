@@ -1,7 +1,15 @@
-require 'feedzirra'
+#require 'feedzirra'
+require 'feedjira'
 module UrlAnalyze
   def url_analyze(url)
   
+    url2=url.gsub('http://', '')
+    if /\// =~ url2
+      url = $`.gsub($`, 'http://'+$`)
+    #else
+    #  break
+    end
+
         begin
           doc = Nokogiri::HTML(open(url),nil,'utf-8')
         rescue
@@ -19,9 +27,9 @@ module UrlAnalyze
         end
 
         if false && feed.last_modified != nil
-          parsedFeed = Feedzirra::Feed.fetch_and_parse "#{@feed_url}", :if_modified_since => feed.last_modified
+          parsedFeed = Feedjira::Feed.fetch_and_parse "#{@feed_url}", :if_modified_since => feed.last_modified
         else
-          parsedFeed = Feedzirra::Feed.fetch_and_parse "#{@feed_url}"
+          parsedFeed = Feedjira::Feed.fetch_and_parse "#{@feed_url}"
         end
 
         if !parsedFeed || parsedFeed.instance_of?(Fixnum)
