@@ -3,12 +3,13 @@ require 'feedjira'
 module UrlAnalyze
   def url_analyze(url)
   
-    url2=url.gsub('http://', '')
-    if /\// =~ url2
-      url = $`.gsub($`, 'http://'+$`)
-    #else
-    #  break
-    end
+        #url2=url.gsub('http://', '')
+        #if /\// =~ url2
+        #  url = $`.gsub($`, 'http://'+$`+'/')
+        #  path = $'
+        #else
+        #  break
+        #end
 
         begin
           doc = Nokogiri::HTML(open(url),nil,'utf-8')
@@ -17,11 +18,25 @@ module UrlAnalyze
         end
 
         doc.css('link').each do |link|
-          if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
+          #if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false && link['href'].include?(path) == false
+          #if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
+          if link['type'] == 'application/rss+xml' && link['rel'] == 'alternate'
             href = link['href']
+            #urltmp=url.gsub('http://', '')
+            #if /\// =~ urltmp
+            #  urlorg = $`.gsub($`, 'http://'+$`+'/')
+            #end
+            #@feed_url = URI.join(urlorg, href)
             @feed_url = URI.join(url, href)
-          elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
+          #elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false && link['href'].include?(path) == false
+          #elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate' && link['href'].include?("/comment/") == false && link['href'].include?("/comments/") == false
+          elsif link['type'] == 'application/atom+xml' && link['rel'] == 'alternate'
             href = link['href']
+            #urltmp=url.gsub('http://', '')
+            #if /\// =~ urltmp
+            #  urlorg = $`.gsub($`, 'http://'+$`+'/')
+            #end
+            #@feed_url = URI.join(urlorg, href)
             @feed_url = URI.join(url, href)
           end
         end
