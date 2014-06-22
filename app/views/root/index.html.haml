@@ -1,4 +1,5 @@
 = link_to t('.new', :default => t("helpers.links.new")), new_feed_path, :class => 'btn btn-primary'
+/= link_to t('.new', :default => t("helpers.links.new")), feed_confirm_path, :class => 'btn btn-primary'
 %h3 新着記事
 
 = render :file => 'layouts/common/feed_entry'

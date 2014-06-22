@@ -101,7 +101,7 @@ namespace :fetch_feed do
               p 'Add => ' + feed_entry.url
 
               entry = Entry.new({
-                :feed_title   => @feed.title,
+                :feed_title   => feed.title,
                 :title        => feed_entry.title,
                 :url          => feed_entry.url,
                 :summary      => (feed_entry.summary || feed_entry.content || '').gsub(/<.+?>/m, '').slice(0, 255),

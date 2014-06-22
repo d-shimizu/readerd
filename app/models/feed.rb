@@ -5,7 +5,8 @@ class Feed < ActiveRecord::Base
   belongs_to :category
   has_many :entries
   
-  validates :url, :presence => true
+  #validates :url, :presence => true, :null => false
+  validates :url, :presence => {:null => true}
 
   validate :url_check
   def url_check
@@ -16,7 +17,8 @@ class Feed < ActiveRecord::Base
     get_url=Feed.where(:url => "#{url}").first rescue get_url = nil
     url_id = get_url.id rescue url_id = nil
     url_entry = Entry.where(:feed_id => "#{url_id}").first rescue url_entry = nil
-    if url_id != nil && url_entry != nil
+    if url_id != nil && url_entry == nil
+    #if url_id != nil
       errors.add(:url, "already exist")
     end
   end

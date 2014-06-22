@@ -3,6 +3,7 @@
   %h3 フィード新規登録
   /%h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
 = render :partial => "form_add"
+/= render :partial => "confirm"
 
 /%h1 New feed
 

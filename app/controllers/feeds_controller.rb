@@ -1,9 +1,14 @@
 class FeedsController < ApplicationController
   require 'fetch_feed'
   require 'url_analyze'
+  require 'feed_analyze'
+  require 'check_url'
+  include CheckURL
   include FetchFeed
   include UrlAnalyze
+  include FeedAnalyze
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  #before_action :set_feed, only: [:edit, :update, :destroy]
 
   # GET /feeds
   # GET /feeds.json
@@ -23,14 +28,28 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    @feed = Feed.find(params[:id])
+    #feed_id =  @feed.id
+    #@feed = Feed.new(feed_id)
+    #@feed.entries.where(feed_id: "#{feed_id}").destroy_all
     @feeds = Feed.all.order('title ASC')
-    @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
+    #@entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
     #@entries = @feed.entries.includes([:feed]).references(:feed).page(params[:page]).order('published_at DESC').per(16)
-    @category = @feed.category
+    #@category = @feed.category
+
+    #@feed = Feed.new(feed_params)
+    #@feed = Feed.new
+    #@feed = Feed.all
+    #@feeds = Feed.all.order('title ASC')
+    @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
+
+    #@entries = @feed.entries.includes([:feed]).references(:feed).page(params[:page]).order('published_at DESC').per(16)
+    #@category = @feed.category
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json=>{
+        :feed    => @feed,
         :feeds    => @feeds,
         :category => @category,
         :entries  => @entries
@@ -53,6 +72,7 @@ class FeedsController < ApplicationController
 
   # GET /feeds/1/edit
   def edit
+    #@feed = Feed.new(feed_params)
     #@feed = Feed.new
     @feeds = Feed.all.order('title ASC')
     respond_to do |format|
@@ -68,19 +88,51 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
     @feeds = Feed.all.order('title ASC')
-    @feed.title, @feed.url, @feed.feed_url, @feed.last_modified = url_analyze(@feed.url)
+    @feedtmp = url_analyze(@feed.url)
 
-    respond_to do |format|
-      if @feed.save
-        feed_fetch 
+    unless params[:feedurl].blank?
+      @feed.feed_url=params["feedurl"]["0"]
 
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @feed, :json => { :feed  => @feed, :feeds => @feeds } }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+      @feed.title, @feed.url, @feed.feed_url, @feed.last_modified = feed_analyze(@feed.feed_url)
+      respond_to do |format|
+        if @feed.save
+          feed_fetch
+          format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+	      format.json { render action: 'show', status: :created, location: @feed, :json => { :feed  => @feed, :feeds => @feeds } }
+        else
+          format.html { render action: 'new' }
+	      format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+        end
+      end
+    else
+#        respond_to do |format|
+#          format.html { render action: 'confirm' }
+#          format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+#        end
+
+      respond_to do |format|
+        #if params["feed"]["url"].blank?
+        # 空白でないとき
+        #unless params["feed"]["url"].blank?
+        res = check_url(@feed.url)
+        #unless params["feed"]["url"].blank? && @feed.url == params["feed"]["url"]
+        unless params["feed"]["url"].blank?
+          #@feed.feed_url=params["feedurl"]["0"]
+          #unless (Nokogiri::HTML(open(@feed.url),nil,'utf-8')) == false 
+          if res == false
+            format.html { render action: 'new' }
+	        format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+          else
+            format.html { render action: 'confirm' }
+            format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+          end
+        else
+          format.html { render action: 'new' }
+	      format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+        end
       end
     end
+
   end
 
   # PATCH/PUT /feeds/1
@@ -112,6 +164,10 @@ class FeedsController < ApplicationController
     end
   end
 
+  def confirm
+    @feed=params[:feedurl]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
@@ -120,6 +176,7 @@ class FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:title, :url, :feed_url, :category_id, :last_modified)
+      params.require(:feed).permit(:title, :url, :feed_url, :category_id, :last_modified) if params[:feed]
+      #params.require(:feed).permit(:title, :url, :feed_url, :category_id, :last_modified)
     end
 end

@@ -1,0 +1,20 @@
+- model_class = Feed
+= form_for @feed do |f|
+  - if @feed.errors.any?
+    #error_explanation
+      %h3= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
+      %ul
+        - @feed.errors.full_messages.each do |msg|
+          %li= msg
+
+  %dl
+    %font(size="3px")
+      - @feedtmp.each do |feed1, feed2, feed3, feed4 |
+        %dd.site
+          .field
+            /= radio_button :feedurl, 0, feed3
+            = radio_button :feedurl, 0, feed3
+            = link_to feed3
+          .actions
+            = f.submit nil, :class => 'btn btn-primary', :name=> 'feed_url'
+            = link_to t('.cancel', :default => t("helpers.links.cancel")), "/", :class => 'btn'

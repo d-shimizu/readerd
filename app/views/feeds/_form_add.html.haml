@@ -1,33 +1,21 @@
+/= form_for @feed, method:confirm  do |f|
+/= form_for [ :confirm, @feed ] do |f|
 = form_for @feed do |f|
   - if @feed.errors.any?
     #error_explanation
-      /%h2= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
       %h3= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
       %ul
         - @feed.errors.full_messages.each do |msg|
           %li= msg
 
-  -#.field
-    = f.label :title
-    = f.text_field :title
   .field
     = f.label :url
-    = f.text_field :url, :size => 128
-  -#.field
-    = f.label :feed_url
-    = f.text_field :feed_url
-  -#.field
-    = f.label :category_id
-    = f.number_field :category_id
-  -#.field
-    = f.label :last_modified
-    = f.datetime_select :last_modified
-  -#.actions
-    = f.submit 'Save'
-  /.form-actions
+    /= f.text_field :url, :size => 1024, value="http://"
+    = f.text_field :url, :size => 1024, :value => "http://"
+    /= f.submit, render :partial => "confirm" , :class => 'btn btn-primary'
+    /= f.submit nil, :class => 'btn btn-primary', render :partial => "confirm"
   .actions
+    /= render :action => "confirm", :layout => false
     = f.submit nil, :class => 'btn btn-primary'
-    /= f.submit nil, :class => 'btn btn-mini btn-primary'
-    /= link_to t('.cancel', :default => t("helpers.links.cancel")), feeds_path, :class => 'btn'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), "/", :class => 'btn'
-    /= link_to t('.cancel', :default => t("helpers.links.cancel")), feeds_path, :class => 'btn btn-mini'
+    /= render :partial => "confirm"

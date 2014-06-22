@@ -6,7 +6,22 @@ Readerd::Application.routes.draw do
 
   resources :categories
 
+  #match "feeds/confirm" => 'feeds#confirm'
   resources :feeds
+  #resources :confirm
+  #confirm :feeds, 'feeds#confirm'
+  #match :feeds, to: 'feeds#confirm', via: confirm
+  #get "feeds/:id" => 'feeds#confirm', :as => 'confirm'
+  #post "feeds/:id" => 'feeds#confirm', :as => 'confirm'
+  post "feeds/confirm" => 'feeds#confirm', :as => 'confirm'
+  #get "page/:id" => 'home#page', :as => 'page'
+
+  #match "/feeds/confirm" => "feeds#confirm"
+  #resources :feeds do
+    #post :confirm , :on =>member
+  #  post :confirm
+  #   resources :feeds, to: 'feeds#confirm', via: confirm
+  #end
 
   get "root/index"
   root :to => 'root#index'
