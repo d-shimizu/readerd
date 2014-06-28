@@ -12,30 +12,12 @@
 %p
   %b Feed url:
   = @feed.feed_url
-%p
+-#%p
   %b Category:
   = @feed.category_id
 %p
   %b Last modified:
   = @feed.last_modified
-
--#- @feeds.each do |feed|
-  %p
-    %b Title:
-    = feed.title
-  %p
-    %b Url:
-    = feed.url
-  %p
-    %b Feed url:
-    = feed.feed_url
-  %p
-    %b Category:
-    = feed.category_id
-  %p
-    %b Last modified:
-    = feed.last_modified
-
 
 %br
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_feed_path, :class => 'btn btn-primary'

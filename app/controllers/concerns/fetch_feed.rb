@@ -12,8 +12,11 @@ module FetchFeed
         end
 
         tmp = parsedFeed.entries
+        #p tmp
         parsedFeed_entries_tmp = tmp.sort{|aa, bb|
-          aa.published <=> bb.published
+           if aa.published != bb.published
+             aa.published <=> bb.published
+           end
         }
         parsedFeed_entries = parsedFeed_entries_tmp.reverse
 

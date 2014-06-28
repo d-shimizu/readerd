@@ -76,11 +76,20 @@ namespace :fetch_feed do
           # DBに保存されている最新のエントリを取得
           latest_entry = Entry.where(:feed_id => feed.id).order('created_at DESC').first
           #p "latest_entry #{latest_entry}"
-          # 取得したFeedを更新日時の昇順に並べ替え
+          ## 取得したFeedを更新日時の昇順に並べ替え
+          # 取得したFeedを更新日時の降順に並べ替え
+          #p parsedFeed.entries
           tmp = parsedFeed.entries
+          #p tmp
+          #if parsedFeed.entries.published != nil
           parsedFeed_entries_tmp = tmp.sort{|aa, bb|
+              #(-1) * (aa.published <=> bb.published)
+            #if aa.published != bb.published
+            #if aa.published != nil && bb.published != nil
               aa.published <=> bb.published
+            #end
           }
+          #end
           # 降順に並べ替え
           parsedFeed_entries = parsedFeed_entries_tmp.reverse
 

@@ -8,10 +8,13 @@
         - @feed.errors.full_messages.each do |msg|
           %li= msg
 
+  /%p#notice= notice
+  /%p#notice= alert
+  %p#error= alert
   .field
     = f.label :url
-    /= f.text_field :url, :size => 1024, value="http://"
     = f.text_field :url, :size => 1024, :value => "http://"
+    /= f.text_field :url, :size => 1024
     /= f.submit, render :partial => "confirm" , :class => 'btn btn-primary'
     /= f.submit nil, :class => 'btn btn-primary', render :partial => "confirm"
   .actions

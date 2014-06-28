@@ -29,22 +29,8 @@ class FeedsController < ApplicationController
   # GET /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
-    #feed_id =  @feed.id
-    #@feed = Feed.new(feed_id)
-    #@feed.entries.where(feed_id: "#{feed_id}").destroy_all
     @feeds = Feed.all.order('title ASC')
-    #@entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
-    #@entries = @feed.entries.includes([:feed]).references(:feed).page(params[:page]).order('published_at DESC').per(16)
-    #@category = @feed.category
-
-    #@feed = Feed.new(feed_params)
-    #@feed = Feed.new
-    #@feed = Feed.all
-    #@feeds = Feed.all.order('title ASC')
     @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
-
-    #@entries = @feed.entries.includes([:feed]).references(:feed).page(params[:page]).order('published_at DESC').per(16)
-    #@category = @feed.category
 
     respond_to do |format|
       format.html # show.html.erb
@@ -72,8 +58,6 @@ class FeedsController < ApplicationController
 
   # GET /feeds/1/edit
   def edit
-    #@feed = Feed.new(feed_params)
-    #@feed = Feed.new
     @feeds = Feed.all.order('title ASC')
     respond_to do |format|
       format.html
@@ -105,28 +89,23 @@ class FeedsController < ApplicationController
         end
       end
     else
-#        respond_to do |format|
-#          format.html { render action: 'confirm' }
-#          format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
-#        end
-
       respond_to do |format|
-        #if params["feed"]["url"].blank?
-        # 空白でないとき
-        #unless params["feed"]["url"].blank?
         res = check_url(@feed.url)
-        #unless params["feed"]["url"].blank? && @feed.url == params["feed"]["url"]
+        # 空白でないとき
         unless params["feed"]["url"].blank?
-          #@feed.feed_url=params["feedurl"]["0"]
-          #unless (Nokogiri::HTML(open(@feed.url),nil,'utf-8')) == false 
-          if res == false
-            format.html { render action: 'new' }
-	        format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
-          else
+          if res == true
             format.html { render action: 'confirm' }
             format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
+          else
+            #flash.now[:error] = "URL is invalid"
+            flash.now[:alert] = "URL is invalid"
+            #flash.now[:notice] = "URL is invalid"
+            format.html { render action: 'new'}
+	        format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
           end
         else
+          #flash.now[:error] = "URL is blank"
+          flash.now[:alert] = "URL is blank"
           format.html { render action: 'new' }
 	      format.json { render json: @feed.errors, status: :unprocessable_entity, :json => { :feed  => @feed, :feeds => @feeds } }
         end
