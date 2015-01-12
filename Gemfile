@@ -70,7 +70,7 @@ gem 'rb-readline'
 gem 'unicorn'
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
 
 ### Use jquery
 gem 'execjs'
@@ -100,7 +100,8 @@ gem 'feedjira'
 
 ### Use nokogiri for URL Analyze
 #gem 'nokogiri', '~> 1.6.0'
-gem 'nokogiri'
+#gem 'nokogiri'
+gem 'nokogiri', '~> 1.6.2.1'
 
 ### Use devise (User Authorization)
 gem 'devise'

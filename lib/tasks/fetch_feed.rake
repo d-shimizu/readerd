@@ -79,19 +79,33 @@ namespace :fetch_feed do
           ## 取得したFeedを更新日時の昇順に並べ替え
           # 取得したFeedを更新日時の降順に並べ替え
           #p parsedFeed.entries
-          tmp = parsedFeed.entries
+          #tmp = parsedFeed.entries
           #p tmp
           #if parsedFeed.entries.published != nil
-          parsedFeed_entries_tmp = tmp.sort{|aa, bb|
+          parsedFeed.entries.delete_if { |tmpentries| tmpentries.published == nil }
+          if parsedFeed.entries.length > 2
+          #if parsedFeed.entries[0][1].nil? == false
+            #begin
+              parsedFeed_entries_tmp = parsedFeed.entries.sort{|aa, bb|
               #(-1) * (aa.published <=> bb.published)
             #if aa.published != bb.published
             #if aa.published != nil && bb.published != nil
-              aa.published <=> bb.published
+                aa.published <=> bb.published
             #end
-          }
+              }
+             #rescue ArgumentError
+          else
+        #  next
+            parsedFeed_entries_tmp = parsedFeed.entries
+            #end
+          end
           #end
           # 降順に並べ替え
-          parsedFeed_entries = parsedFeed_entries_tmp.reverse
+          begin
+            parsedFeed_entries = parsedFeed_entries_tmp.reverse
+          rescue NoMethodError
+            next
+          end
 
           # latest_entryの更新日時とparsedFeed_entriesの更新日時を比較して
           # parsedFeed_entriesの更新日時が大きければupdatedEntriesへ格納
@@ -99,14 +113,17 @@ namespace :fetch_feed do
             updatedEntries = parsedFeed_entries.take_while {
               |e| e.published > latest_entry.published_at
             }
-          else
+          #else
+          elsif latest_entry == nil
             updatedEntries = parsedFeed_entries
+          else
+            next
           end
 
           # Save entries
           updatedEntries.reverse.each do |feed_entry|
 
-            if feed_entry.url.include?("#comment-") == false
+            if feed_entry.url.nil? == false && feed_entry.url.include?("#comment-") == false
               p 'Add => ' + feed_entry.url
 
               entry = Entry.new({
@@ -118,8 +135,11 @@ namespace :fetch_feed do
                 :feed_id      => feed.id
                 #:read         => 'f'
               })
-              entry.save
+             entry.save
+            else
+              next
             end
+
           end
 
       end

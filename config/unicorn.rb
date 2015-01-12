@@ -1,13 +1,13 @@
 application = 'readerd'
 
 worker_processes 2
-working_directory "/home/rails/#{application}"
+working_directory "/home/app/#{application}"
 
 # Output Unix Domain Socket
-listen "/home/rails/#{application}/tmp/sockets/unicorn.sock"
+listen "/home/app/#{application}/tmp/sockets/unicorn.sock"
 
 # Output PID File
-pid "/home/rails/#{application}/tmp/pids/unicorn.pid"
+pid "/home/app/#{application}/tmp/pids/unicorn.pid"
 
 timeout 60
 
