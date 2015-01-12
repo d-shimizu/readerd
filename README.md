@@ -15,7 +15,7 @@ Please install Ruby 2.0, Rails 4.0 and necessary Gem, Nginx 1.4, PostgreSQL 9.3 
 You must run Nginx and PostgreSQL.
 Then, Please do the following.
 
-	$ git clone https://github.com/daigoro-rc/readerd.git
+	$ git clone https://github.com/shimizu-daisuke/readerd.git
 
 	$ cd readerd
 
