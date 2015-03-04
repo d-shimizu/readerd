@@ -21,10 +21,12 @@ Then, Please do the following.
 
 	$ bundle install --path vendor/bundler
 
-	$ bundle exec rake generate_secret_token:generate
-
  	$ vi config/database.yml
 
 	$ bundle exec rake db:migrate
+
+	$ bundle exec rake generate_secret_token:generate
+
+	$ bundle exec rake assets:precompile RAILS_ENV=production
 
 	$ bundle exec unicorn_rails -c config/unicorn.rb -E production -D -p 3000
