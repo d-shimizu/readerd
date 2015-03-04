@@ -24,3 +24,10 @@ vendor/bundler/*
 *.BK.ORG
 *.ORG
 *.bak
+
+# Deploy
+/current
+/releases
+/repo
+/shared
+revisions.log
