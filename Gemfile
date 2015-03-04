@@ -115,3 +115,11 @@ gem 'devise-i18n'
 gem 'newrelic_rpm'
 
 gem "awesome_nested_set"
+
+#group :deployment do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn' # unicornを使っている場合のみ
+#end
