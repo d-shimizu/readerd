@@ -11,6 +11,7 @@ require 'capistrano/rails/migrations'
 #require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano3/unicorn'
+require 'whenever/capistrano'
 
 # Includes tasks from other gems included in your Gemfile
 #

@@ -88,9 +88,9 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:readerd) do
+      execute "cd /home/rails/readerd/current ; bundle exec rake generate_secret_token:generate"
       execute "kill -s USR2 `cd /home/rails/readerd/current ; cat tmp/pids/unicorn.pid`"
     end
   end
   after :finishing, 'deploy:cleanup'
 end
-
