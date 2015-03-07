@@ -14,20 +14,20 @@ module FetchFeed
         #tmp = parsedFeed.entries
         p parsedFeed.entries
         #p tmp
-        parsedFeed_entries_tmp = nil
+        @parsedFeed_entries_tmp = nil
         if parsedFeed.entries.length > 2
         #if tmp.length > 2
           begin
-            parsedFeed_entries_tmp = parsedFeed.entries.sort{|aa, bb|
+            @parsedFeed_entries_tmp = parsedFeed.entries.sort{|aa, bb|
               #if aa.published != bb.published
                 aa.published <=> bb.published
               #end
             }
           rescue ArgumentError
-            parsedFeed_entries_tmp = parsedFeed.entries
+            @parsedFeed_entries_tmp = parsedFeed.entries
           end
         end
-        parsedFeed_entries = parsedFeed_entries_tmp.reverse
+        parsedFeed_entries = @parsedFeed_entries_tmp.reverse
 
         ### Get latest entry
         latest_entry = Entry.where(:feed_id => @feed.id).order('created_at DESC').first
