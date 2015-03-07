@@ -14,7 +14,7 @@ module FetchFeed
         #tmp = parsedFeed.entries
         p parsedFeed.entries
         #p tmp
-        @parsedFeed_entries_tmp = nil
+        @parsedFeed_entries_tmp = parsedFeed.entries
         if parsedFeed.entries.length > 2
         #if tmp.length > 2
           begin
