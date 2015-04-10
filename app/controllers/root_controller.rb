@@ -1,6 +1,7 @@
 class RootController < ApplicationController
   def index
-    @feeds = Feed.all.order('title ASC')
+    #@feeds = Feed.all.order('title ASC')
+    #@feed = Feed.all.order('title ASC')
     #@entries = Entry.includes([:feed]).order('published_at DESC').page(params[:page]).per(16)
     @entries = Entry.includes(:feed).order('published_at DESC').page(params[:page]).per(16)
     #@entries = Entry.references([:feed]).order('published_at DESC').page(params[:page]).per(16)
@@ -15,8 +16,9 @@ class RootController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => {
-        :feeds   => @feeds,
-        :entries => @entries
+        #:feeds   => @feeds,
+        #:feed   => @feed,
+       :entries => @entries
       }}
     end
 

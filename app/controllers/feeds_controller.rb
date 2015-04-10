@@ -28,14 +28,14 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-    @feed = Feed.find(params[:id])
+    #@feed = Feed.find(params[:id])
     @feeds = Feed.all.order('title ASC')
     @entries = @feed.entries.includes([:feed]).page(params[:page]).order('published_at DESC').per(16)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json=>{
-        :feed    => @feed,
+        #:feed    => @feed,
         :feeds    => @feeds,
         :category => @category,
         :entries  => @entries
