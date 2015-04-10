@@ -1,6 +1,6 @@
 class RootController < ApplicationController
   def index
-    #@feeds = Feed.all.order('title ASC')
+    @feeds = Feed.all.order('title ASC')
     #@feed = Feed.all.order('title ASC')
     #@entries = Entry.includes([:feed]).order('published_at DESC').page(params[:page]).per(16)
     @entries = Entry.includes(:feed).order('published_at DESC').page(params[:page]).per(16)
