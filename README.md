@@ -22,7 +22,7 @@ Then, Please do the following.
 
  	$ vi config/database.yml
 
-        $ bundle exec rake db:setup
+	$ bundle exec rake db:setup
 
 	$ bundle exec rake db:migrate
 
@@ -31,5 +31,7 @@ Then, Please do the following.
 	$ bundle exec rake assets:precompile
 
         $ bundle exec rails s -b 0.0.0.0
+
         or
+
 	$ bundle exec unicorn_rails -c config/unicorn.rb -E production -D -p 3000

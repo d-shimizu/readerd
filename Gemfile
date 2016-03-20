@@ -52,7 +52,8 @@ end
 ### reader app gem
 ###
 # Use PostgreSQL as the database for Active Record
-gem 'pg'
+#gem 'pg'
+gem 'sqlite3'
 
 ### Use railties
 #gem 'railties', '~> 4.0.0'
@@ -81,7 +82,7 @@ gem 'haml'
 gem 'haml-rails'
 
 ### Use twitter-bootstrap-rails
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '2.2.8'
 gem 'less-rails'
 
 ### Use whenever for crontab Manager
