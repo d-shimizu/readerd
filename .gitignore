@@ -20,7 +20,6 @@
 /.env
 /config/initializers/secret_token.rb
 vendor/bundler/*
-*.lock
 *.BK.ORG
 *.ORG
 *.bak
