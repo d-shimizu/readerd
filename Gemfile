@@ -12,7 +12,8 @@ gem 'rails'
 gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+#gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
 #gem 'coffee-rails', '~> 4.0.0'
@@ -28,7 +29,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+#gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -101,8 +103,8 @@ gem 'feedjira'
 
 ### Use nokogiri for URL Analyze
 #gem 'nokogiri', '~> 1.6.0'
-#gem 'nokogiri'
-gem 'nokogiri', '~> 1.6.2.1'
+gem 'nokogiri'
+#gem 'nokogiri', '~> 1.6.2.1'
 
 ### Use devise (User Authorization)
 gem 'devise'
@@ -117,8 +119,11 @@ gem 'newrelic_rpm'
 
 gem "awesome_nested_set"
 
+#gem "mini_portile2"
+
 #group :deployment do
-  gem 'capistrano', '~> 3.2.1'
+  #gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
