@@ -1,0 +1,20 @@
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/bcrypt-3.1.11/ext/mri
+/usr/local/bin/ruby21 -r ./siteconf20160320-11400-14flrsm.rb extconf.rb
+creating Makefile
+
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" clean
+
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR="
+compiling crypt_gensalt.c
+compiling wrapper.c
+compiling crypt_blowfish.c
+compiling bcrypt_ext.c
+compiling crypt.c
+linking shared-object bcrypt_ext.so
+
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20160320-11400-la9f05
+installing default bcrypt_ext libraries

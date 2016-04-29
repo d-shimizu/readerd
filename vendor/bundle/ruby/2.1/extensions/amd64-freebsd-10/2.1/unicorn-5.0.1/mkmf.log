@@ -1,0 +1,134 @@
+have_macro: checking for SIZEOF_OFF_T in ruby.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"cc -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby.h>
+4: /*top*/
+5: #ifndef SIZEOF_OFF_T
+6: # error
+7: |:/ === SIZEOF_OFF_T undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for SIZEOF_SIZE_T in ruby.h... -------------------- yes
+
+"cc -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby.h>
+4: /*top*/
+5: #ifndef SIZEOF_SIZE_T
+6: # error
+7: |:/ === SIZEOF_SIZE_T undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for SIZEOF_LONG in ruby.h... -------------------- yes
+
+"cc -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby.h>
+4: /*top*/
+5: #ifndef SIZEOF_LONG
+6: # error
+7: |:/ === SIZEOF_LONG undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+have_func: checking for rb_str_set_len() in ruby.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_str_set_len; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_clear() in ruby.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_hash_clear; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for gmtime_r() in time.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <time.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))gmtime_r; return 0; }
+/* end */
+
+--------------------
+

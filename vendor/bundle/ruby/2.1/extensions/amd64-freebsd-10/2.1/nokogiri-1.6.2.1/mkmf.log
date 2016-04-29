@@ -1,0 +1,559 @@
+have_header: checking for iconv.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/include -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX conftest.c  -L. -L/usr/local/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"cpp -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/include -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <iconv.h>
+/* end */
+
+--------------------
+
+have_func: checking for iconv_open() in iconv.h... -------------------- no
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/include -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX conftest.c  -L. -L/usr/local/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+/tmp/conftest-0a2e70.o: In function `t':
+/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ext/nokogiri/conftest.c:15: undefined reference to `libiconv_open'
+cc: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <iconv.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))iconv_open; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/include -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX conftest.c  -L. -L/usr/local/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:15:26: error: too few arguments to function call, expected 2, have 0
+int t(void) { iconv_open(); return 0; }
+              ~~~~~~~~~~ ^
+/usr/local/include/iconv.h:75:1: note: 'libiconv_open' declared here
+extern iconv_t iconv_open (const char* tocode, const char* fromcode);
+^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <iconv.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { iconv_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for iconv_open() in -liconv... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/include -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX conftest.c  -L. -L/usr/local/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21 -liconv  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <iconv.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))iconv_open; return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -llzma... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21 -llzma  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlParseDoc() in libxml/parser.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <libxml/parser.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlParseDoc; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xsltParseStylesheetDoc() in libxslt/xslt.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:15:57: error: use of undeclared identifier 'xsltParseStylesheetDoc'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xsltParseStylesheetDoc; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <libxslt/xslt.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))xsltParseStylesheetDoc; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:15:15: warning: implicit declaration of function 'xsltParseStylesheetDoc' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xsltParseStylesheetDoc(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <libxslt/xslt.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { xsltParseStylesheetDoc(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for exsltFuncRegister() in libexslt/exslt.h... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <libexslt/exslt.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))exsltFuncRegister; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlHasFeature()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlHasFeature'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlHasFeature; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlHasFeature; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlHasFeature' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlHasFeature(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlHasFeature(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlFirstElementChild()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlFirstElementChild'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlFirstElementChild; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlFirstElementChild; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlFirstElementChild' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlFirstElementChild(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlFirstElementChild(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlRelaxNGSetParserStructuredErrors()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlRelaxNGSetParserStructuredErrors'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlRelaxNGSetParserStructuredErrors; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlRelaxNGSetParserStructuredErrors; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlRelaxNGSetParserStructuredErrors' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlRelaxNGSetParserStructuredErrors(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlRelaxNGSetParserStructuredErrors(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlRelaxNGSetParserStructuredErrors()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlRelaxNGSetParserStructuredErrors'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlRelaxNGSetParserStructuredErrors; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlRelaxNGSetParserStructuredErrors; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlRelaxNGSetParserStructuredErrors' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlRelaxNGSetParserStructuredErrors(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlRelaxNGSetParserStructuredErrors(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlRelaxNGSetValidStructuredErrors()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlRelaxNGSetValidStructuredErrors'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlRelaxNGSetValidStructuredErrors; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlRelaxNGSetValidStructuredErrors; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlRelaxNGSetValidStructuredErrors' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlRelaxNGSetValidStructuredErrors(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlRelaxNGSetValidStructuredErrors(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlSchemaSetValidStructuredErrors()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlSchemaSetValidStructuredErrors'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlSchemaSetValidStructuredErrors; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlSchemaSetValidStructuredErrors; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlSchemaSetValidStructuredErrors' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlSchemaSetValidStructuredErrors(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlSchemaSetValidStructuredErrors(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for xmlSchemaSetParserStructuredErrors()... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:57: error: use of undeclared identifier 'xmlSchemaSetParserStructuredErrors'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlSchemaSetParserStructuredErrors; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))xmlSchemaSetParserStructuredErrors; return 0; }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/include/libxml2 -I/usr/include -I/usr/local/include -isystem /usr/local/include   -DNOKOGIRI_LIBXML2_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0\" -DNOKOGIRI_LIBXSLT_PATH\=\"/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28\" -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC  -g -DXP_UNIX -DNOKOGIRI_USE_PACKAGED_LIBRARIES conftest.c  -L. -L/usr/local/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib -L/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib -L/usr/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic    /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lruby21 /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libexslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxslt/1.1.28/lib/libxslt.a -lm -liconv -lpthread -lz /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/nokogiri-1.6.2.1/ports/amd64-portbld-freebsd10/libxml2/2.8.0/lib/libxml2.a -llzma -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc "
+conftest.c:13:15: warning: implicit declaration of function 'xmlSchemaSetParserStructuredErrors' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { xmlSchemaSetParserStructuredErrors(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { xmlSchemaSetParserStructuredErrors(); return 0; }
+/* end */
+
+--------------------
+

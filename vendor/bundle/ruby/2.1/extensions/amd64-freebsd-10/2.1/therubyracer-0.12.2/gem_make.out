@@ -1,0 +1,86 @@
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/therubyracer-0.12.2/ext/v8
+/usr/local/bin/ruby21 -r ./siteconf20160320-11400-sox00x.rb extconf.rb
+checking for main() in -lpthread... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/extensions/amd64-freebsd-10/2.1/therubyracer-0.12.2/mkmf.log
+
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/therubyracer-0.12.2/ext/v8
+make "DESTDIR=" clean
+
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/therubyracer-0.12.2/ext/v8
+make "DESTDIR="
+compiling gc.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling accessor.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling context.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling constraints.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling value.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling locker.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling primitive.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling heap.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling message.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling rr.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling template.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling trycatch.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling invocation.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling script.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling date.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling function.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling backref.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling stack.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling signature.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling string.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling init.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+init.cc:11:20: warning: empty parentheses interpreted as a function declaration [-Wvexing-parse]
+    v8::Locker lock();
+                   ^~
+init.cc:11:20: note: remove parentheses to declare a variable
+    v8::Locker lock();
+                   ^~
+init.cc:11:16: warning: 'lock' has C-linkage specified, but returns user-defined type 'v8::Locker' which is incompatible with C [-Wreturn-type-c-linkage]
+    v8::Locker lock();
+               ^
+2 warnings generated.
+compiling external.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling object.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling v8.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling array.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling constants.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling handles.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+compiling exception.cc
+c++: warning: argument unused during compilation: '-rdynamic'
+linking shared-object v8/init.so
+
+current directory: /usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/therubyracer-0.12.2/ext/v8
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 init.so ./.gem.20160320-11400-xt9f9a/v8
+installing default init libraries

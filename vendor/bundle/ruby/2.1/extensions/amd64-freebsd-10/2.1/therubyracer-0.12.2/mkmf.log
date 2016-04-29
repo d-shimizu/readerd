@@ -1,0 +1,33 @@
+have_library: checking for main() in -lpthread... -------------------- yes
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"cc -o conftest -I/usr/local/include/ruby-2.1//amd64-freebsd10 -I/usr/local/include/ruby-2.1//ruby/backward -I/usr/local/include/ruby-2.1/ -I. -I/usr/local/include -isystem /usr/local/include   -O2 -pipe  -isystem /usr/local/include -fstack-protector -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/local/lib -L.   -L/usr/local/lib -fstack-protector -rdynamic     -lruby21 -lpthread  -lexecinfo -lcrypt -lm -lpthread -L/usr/local/lib  -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+

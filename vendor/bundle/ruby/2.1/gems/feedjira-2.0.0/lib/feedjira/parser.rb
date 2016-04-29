@@ -1,0 +1,1 @@
+module Feedjira::Parser; end
