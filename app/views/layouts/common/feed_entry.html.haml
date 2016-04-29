@@ -8,6 +8,7 @@
         %font(size="3px")
           -#%img{:src => 'http://www.google.com/s2/favicons?domain='+entry.feed.url+''}
           %img{:src => 'http://www.google.com/s2/favicons?domain='+entry.url+''}
+          -#= link_to entry.feed.title, entry.feed
           = link_to entry.feed_title, entry.feed
           -#= link_to @feeds.id, entry.feed
           -#= link_to @entries.title, entry.feed

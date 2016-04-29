@@ -45,9 +45,6 @@
                   /%a(href="/admin_users/sign_out" data-method="delete" rel="nofollow")
                   %a(href="/users/sign_out" data-method="delete" rel="nofollow")
                     %span(class="label label-important") Log out
-                %li
-                  %a(href="/users/edit")
-                    %span(class="label label-important") Edit
  
     .container-fluid
 
@@ -60,13 +57,8 @@
           = render :file => 'layouts/common/sidebar'
         /- if admin_user_signed_in?
         - if user_signed_in?
-          /- if request.path_info = edit_user_registration
-          /- if request.path_info != '/users/edit' || request.path_info != '/users'
-          /- if ((request.path_info != '/users/edit') || (request.path_info != '/users') )
-          - if (request.path_info != '/users')
-            - if (request.path_info != '/users/edit')
-              .span3.side
-                = render :file => 'layouts/common/side'
+          .span3.side
+            = render :file => 'layouts/common/side'
             /%iframe{:src => "layouts/common/side"}
           .span9
             = bootstrap_flash

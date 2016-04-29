@@ -5,10 +5,10 @@
 #   gem 'pg'
 development:
   adapter: postgresql
-  database: readerd_dev
+  database: readerd_development
   pool: 5
   timeout: 5000
-  username: readerd
+  username: rails
   password: password
 
 # Warning: The database defined as "test" will be erased and
@@ -19,15 +19,15 @@ test:
   database: readerd_test
   pool: 5
   timeout: 5000
-  username: readerd
+  username: rails
   password: password
 
 production:
   adapter: postgresql
   #host: readerd.cfoxvrxeiccc.ap-northeast-1.rds.amazonaws.com
   host: localhost
-  database: readerd
+  database: readerd_production
   pool: 5
   timeout: 5000
-  username: readerd
+  username: rails
   password: password

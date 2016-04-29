@@ -1,4 +1,0 @@
-/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/libv8-3.16.14.13/patches/clang/no-unused-private-field.patch
-/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/libv8-3.16.14.13/patches/clang33/silence-nested-anon-types-and-unused-function-warnings.patch
-/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/libv8-3.16.14.13/patches/disable-building-tests.patch
-/usr/local/www/apache24/www2033u/readerd/vendor/bundle/ruby/2.1/gems/libv8-3.16.14.13/patches/fPIC-for-static.patch
