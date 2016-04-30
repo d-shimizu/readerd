@@ -54,7 +54,7 @@ end
 ### reader app gem
 ###
 # Use PostgreSQL as the database for Active Record
-#gem 'pg'
+gem 'pg'
 gem 'sqlite3'
 
 ### Use railties

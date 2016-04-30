@@ -1,13 +1,14 @@
-application = 'readerd'
+application = '/usr/local/www/apache24/www2033u/readerd'
 
 worker_processes 2
-working_directory "/home/rails/#{application}/current"
+working_directory "#{application}"
+#working_directory "/home/rails/#{application}/current"
 
 # Output Unix Domain Socket
-listen "/home/rails/#{application}/current/tmp/sockets/unicorn.sock"
+listen "#{application}/tmp/sockets/unicorn.sock"
 
 # Output PID File
-pid "/home/rails/#{application}/current/tmp/pids/unicorn.pid"
+pid "#{application}/tmp/pids/unicorn.pid"
 
 timeout 60
 
