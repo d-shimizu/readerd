@@ -1,6 +1,8 @@
 Readerd::Application.routes.draw do
-  devise_for :users
-  resources :entries
+  #devise_for :users
+      devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
 
   resources :entries
 
