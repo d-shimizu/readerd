@@ -14,7 +14,7 @@ Please install Ruby 2.1, Rails 4.2 and necessary Gem, PostgreSQL 9.3 (or SQLite)
 If you install PostgreSQL then you must run PostgreSQL.
 Then, Please do the following.
 
-	$ git clone https://github.com/shimizu-daisuke/readerd.git
+	$ git clone https://github.com/d-shimizu/readerd.git
 
 	$ cd readerd
 
