@@ -1,18 +1,25 @@
-application = '/usr/local/www/apache24/www2033u/readerd'
-
-worker_processes 2
-working_directory "#{application}"
-#working_directory "/home/rails/#{application}/current"
-
-# Output Unix Domain Socket
-listen "#{application}/tmp/sockets/unicorn.sock"
-
-# Output PID File
-pid "#{application}/tmp/pids/unicorn.pid"
-
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 60
-
 preload_app true
+
+before_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+end
+
+after_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end
 
 # 標準出力ログ出力先
 stdout_path "log/unicorn.stdout.log"
@@ -20,22 +27,3 @@ stdout_path "log/unicorn.stdout.log"
 stderr_path "log/unicorn.stderr.log"
 
 GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
-
-before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-
-  old_pid = "#{server.config[:pid]}.oldbin"
-    if old_pid != server.pid
-      begin
-        sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-        Process.kill(sig, File.read(old_pid).to_i)
-      rescue Errno::ENOENT, Errno::ESRCH
-      end
-    end
-
-    sleep 1
-  end
-
-after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
-end
