@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 20131116081433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "entries", force: true do |t|
+  create_table "entries", force: :cascade do |t|
     t.text     "feed_title"
     t.integer  "feed_id"
     t.text     "title"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131116081433) do
     t.datetime "updated_at"
   end
 
-  create_table "feeds", force: true do |t|
+  create_table "feeds", force: :cascade do |t|
     t.text     "title"
     t.text     "url"
     t.text     "feed_url"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20131116081433) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
