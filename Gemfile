@@ -55,7 +55,7 @@ end
 ###
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
-gem 'sqlite3'
+#gem 'sqlite3'
 
 ### Use railties
 #gem 'railties', '~> 4.0.0'
