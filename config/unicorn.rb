@@ -1,5 +1,5 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 1)
-timeout 60
+timeout 15
 preload_app true
 
 before_fork do |server, worker|
@@ -22,8 +22,8 @@ after_fork do |server, worker|
 end
 
 # 標準出力ログ出力先
-stdout_path "log/unicorn.stdout.log"
+#stdout_path "log/unicorn.stdout.log"
 # 標準エラー出力ログ出力先
-stderr_path "log/unicorn.stderr.log"
+#stderr_path "log/unicorn.stderr.log"
 
-GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
+#GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
