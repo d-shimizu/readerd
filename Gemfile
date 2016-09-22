@@ -106,6 +106,9 @@ gem 'feedjira'
 gem 'nokogiri'
 #gem 'nokogiri', '~> 1.6.2.1'
 
+### For URL Redirect
+gem 'open_uri_redirections'
+
 ### Use devise (User Authorization)
 gem 'devise'
 gem 'devise-i18n'
@@ -129,3 +132,4 @@ gem "awesome_nested_set"
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn' # unicornを使っている場合のみ
 #end
+
