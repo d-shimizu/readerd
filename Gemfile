@@ -133,3 +133,4 @@ gem "awesome_nested_set"
   gem 'capistrano3-unicorn' # unicornを使っている場合のみ
 #end
 
+gem 'rails_12factor', group: :production
