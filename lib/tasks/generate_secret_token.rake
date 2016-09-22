@@ -1,6 +1,6 @@
 namespace :generate_secret_token do
   #secret_token_file = Rails.root.join('config', 'initializers', 'secret_token.rb')
-  secret_token_file = Rails.root.join('lib', 'secrets.yml')
+  secret_token_file = Rails.root.join('config', 'secrets.yml')
 
   #file secret_token_file do
     require 'securerandom'
