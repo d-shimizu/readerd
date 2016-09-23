@@ -13,6 +13,9 @@ class RootController < ApplicationController
     #$@entries = Entry.joins(:feed).includes(:feed).order('published_at DESC').page(params[:page]).per(16)
     #@feedtitle=Feed.all(:joins => :title)
 
+    #%x( bundle exec rake "fetch_feed:fetch" )
+    #Rails.logger.info `bundle exec rake "fetch_feed:fetch"`
+
     respond_to do |format|
       format.html
       format.json { render :json => {
@@ -22,6 +25,19 @@ class RootController < ApplicationController
       }}
     end
 
+  end
+
+  def feed_update
+    %x( bundle exec rake "fetch_feed:fetch" )
+    Rails.logger.info `bundle exec rake "fetch_feed:fetch"`
+    respond_to do |format|
+      format.html
+      format.json { render :json => {
+        #:feeds   => @feeds,
+        #:feed   => @feed,
+       :entries => @entries
+      }}
+    end
   end
 
 end

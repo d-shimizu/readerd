@@ -27,6 +27,7 @@ Readerd::Application.routes.draw do
 
   get "root/index"
   root :to => 'root#index'
+  post '/' => 'root#feed_update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
